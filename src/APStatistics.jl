@@ -17,7 +17,7 @@ function frequencytable(array::AbstractArray, orderbykeys = false)
 end
 function binnedtable(array::AbstractArray, orderbykeys = false, bin = 5)
     keys = unique(array)
-    array = [round(i / bin) * bin for i in array]
+    array = [floor(i / bin) * bin for i in array]
     frequencies = [[i, count(x->x == i, array)] for i in keys]
     if orderbykeys
         sort!(frequencies, by = x->x[1])
